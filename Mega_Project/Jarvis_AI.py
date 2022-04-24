@@ -78,7 +78,7 @@ if __name__ == '__main__':
             music_dir='C:\\Users\\parth\\Music\\Planet Pit'
             song=os.listdir(music_dir)
             print(song)
-            os.startfile(os.path.join(music_dir,song[7]))
+            os.startfile(os.path.join(music_dir,song[3]))
 
         elif 'the time' in query:
             strTime=datetime.datetime.now().strftime("%H:%M:%S")
