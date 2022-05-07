@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    body {
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, rgb(43, 188, 224), rgb(220, 18, 196));
+      padding: 10px;
+    }
+    .container {
+      max-width: 700px;
+      width: 100%;
+      background: white;
+      padding: 15px 30px;
+      border-radius: 10px;
+    }
+    .container .title {
+      font-size: 25px;
+      font-weight: 500;
+      position: relative;
+    }
+    .container .title::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 40px;
+      background: linear-gradient(135deg, rgb(43, 188, 224), rgb(220, 18, 196));
+    }
+    .container form .user-details {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 20px 0 12px 0;
+    }
+    form .user-details .input-box {
+      margin-bottom: 15px;
+      width: calc(100% / 2 - 20px);
+    }
+    .user-details .input-box .details {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    .user-details .input-box input {
+      height: 45px;
+      width: 100%;
+      outline: none;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      padding-left: 15px;
+      font-size: 16px;
+      border-bottom-width: 2px;
+      transition: all 0.3s ease;
+    }
+    form .gender-details .gender-title {
+      font-size: 20px;
+      font-weight: 500;
+    }
+    form .gender-details .catagory {
+      display: flex;
+      width: 80%;
+      margin: 14px 0;
+      justify-content: space-between;
+    }
+    .gender-details .catagory label {
+      display: flex;
+      align-items: center;
+    }
+    .gender-details .catagory .dot {
+      height: 18px;
+      width: 18px;
+      background: rgb(156, 156, 156);
+      border-radius: 50%;
+      margin-right: 10px;
+      border: 5px solid transparent;
+      transition: all 0.3s ease;
+    }
+    .user-details .input-box input:focus,
+    .user-details .input-box input:valid {
+      border-color: rgb(145, 51, 239);
+    }
+    #dot-1:checked ~ .catagory label .one,
+    #dot-2:checked ~ .catagory label .two,
+    #dot-3:checked ~ .catagory label .three {
+      border-color: rgb(179, 178, 178);
+      background-color: blueviolet;
+    }
+    form input[type="radio"] {
+      display: none;
+    }
+    form .button {
+      height: 45px;
+      margin: 45px 0;
+    }
+    form .button button {
+      height: 100%;
+      width: 100%;
+      outline: none;
+      background: linear-gradient(135deg, rgb(43, 188, 224), rgb(220, 18, 196));
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 500;
+      color: white;
+      letter-spacing: 1px;
+    }
+    form .button button:hover {
+      background: linear-gradient(
+        -135deg,
+        rgb(43, 188, 224),
+        rgb(220, 18, 196)
+      );
+    }
+    h5 {
+      color: red;
+      padding: 0 0;
+      text-align: center;
+    }
+    .con {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .con .log {
+      background: linear-gradient(135deg, rgb(43, 188, 224), rgb(220, 18, 196));
+      padding: 6px 27px;
+      border-radius: 10px;
+    }
+    .con .log:hover {
+      background: linear-gradient(
+        -135deg,
+        rgb(43, 188, 224),
+        rgb(220, 18, 196)
+      );
+    }
+    .con .log a {
+      color: white;
+      font-weight: 500;
+      font-size: 20px;
+      text-decoration: none;
+    }
+    @media (max-width: 584px) {
+      .container {
+        max-width: 100%;
+      }
+      form .user-details .input-box {
+        margin-bottom: 15px;
+        width: 100%;
+      }
+      form .gender-details .catagory {
+        width: 100%;
+      }
+      .container form .user-details {
+        max-height: 300px;
+        overflow-y: scroll;
+      }
+      .user-details::-webkit-scrollbar {
+        width: 0;
+      }
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="con">
+        <div class="title">Registration</div>
+        <div class="log">
+          <a href="login">Log In</a>
+        </div>
+      </div>
+      <form action="register" method="POST">
+        {% csrf_token %}
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">First Name</span>
+            <input
+              type="text"
+              placeholder="Enter your firstname"
+              name="firstname"
+              required
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">Lastname</span>
+            <input
+              type="text"
+              placeholder="Enter your lastname"
+              name="lastname"
+              required
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">Username </span>
+            <input
+              type="text"
+              placeholder="Enter your username"
+              name="username"
+              required
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              name="email"
+              required
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              name="password"
+              required
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input
+              type="password"
+              placeholder="Confirm your password"
+              name="password2"
+              required
+            />
+          </div>
+        </div>
+        <div class="gender-details">
+          <input type="radio" name="gender" id="dot-1" />
+          <input type="radio" name="gender" id="dot-2" />
+          <input type="radio" name="gender" id="dot-3" />
+          <span class="gender-title">Gender</span>
+          <div class="catagory">
+            <label for="dot-1">
+              <span class="dot one"></span>
+              <span class="gender">Male</span>
+            </label>
+            <label for="dot-2">
+              <span class="dot two"></span>
+              <span class="gender">Female</span>
+            </label>
+            <label for="dot-3">
+              <span class="dot three"></span>
+              <span class="gender">Prefer not to say</span>
+            </label>
+          </div>
+        </div>
+        {% for message in messages %}
+           <h5>Error: {{message}}</h5>
+        {% endfor %}
+        <div class="button">
+          <button type="submit" value="register">Register</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

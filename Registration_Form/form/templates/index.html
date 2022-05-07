@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index</title>
+  </head>
+  <script
+    src="https://kit.fontawesome.com/566ca8ea85.js"
+    crossorigin="anonymous"
+  ></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, rgb(43, 188, 224), rgb(220, 18, 196));
+      padding: 10px;
+    }
+    h1 {
+      font-size: 100px;
+      color: white;
+    }
+    .button {
+      background-color: blue;
+      padding: 15px 15px;
+      color: white;
+      border-radius: 28px;
+      margin: 5px;
+    }
+    .button a {
+      padding: 10px 12px;
+      border-radius: 18px;
+      background-color: white;
+      border: none;
+    }
+    .button a:hover {
+      cursor: pointer;
+      background-color: rgb(189, 188, 188);
+    }
+    i{
+        color: black;
+    }
+  </style>
+  <body>
+    {% if user.is_authenticated %}
+      <h1>Welcome, {{user.username}}</h1>
+      <div class="button">
+        <span>Log Out</span>
+        <a href="logout"><i class="fa fa-sign-out"></i></a>
+      </div>
+    {% else %}
+      <div class="button">
+        <span>Register</span>
+        <a href="register"><i class="fa fa-arrow-right"></i></a>
+      </div>
+      <div class="button">
+        <span>Log In</span>
+        <a href="login"><i class="fa fa-arrow-right"></i></a>
+      </div>
+    {% endif %}
+  </body>
+</html>
